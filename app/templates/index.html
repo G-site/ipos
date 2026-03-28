@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">навчальні глави</p>
+    <h1>{{ hero_title }}</h1>
+    <p class="hero-text">{{ hero_text }}</p>
+</section>
+
+<section class="chapter-grid" aria-label="Список глав">
+    {% for chapter in chapters %}
+        <a class="chapter-card" href="/chapters/{{ chapter.slug }}">
+            <span class="chapter-number">Глава {{ "%02d" | format(chapter.id) }}</span>
+            <h2>{{ chapter.title }}</h2>
+            <p>{{ chapter.description }}</p>
+            <span class="chapter-link">Відкрити главу</span>
+        </a>
+    {% endfor %}
+</section>
+{% endblock %}

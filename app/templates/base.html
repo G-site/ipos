@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} | Школа юного іпод'якона</title>
+    <meta name="description" content="Навчальний сайт для юних іпод'яконів з інтерактивними розділами">
+    <link rel="stylesheet" href="{{ request.url_for('static', path='style.css') }}">
+</head>
+<body>
+    <div class="site-shell">
+        <div class="ambient ambient-left"></div>
+        <div class="ambient ambient-right"></div>
+
+        <header class="site-header">
+            <div class="site-header-inner">
+                <a class="brand" href="/">
+                    <span class="brand-mark">Σ</span>
+                    <span class="brand-text">
+                        <span class="brand-title">Школа юного іпод'якона</span>
+                        <span class="brand-note">детальне навчання служіння</span>
+                    </span>
+                </a>
+                <div class="header-badge">
+                    <span class="header-badge-label">онлайн курс</span>
+                    <span class="header-badge-text">розділи, пояснення та медіа прямо в тексті</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="page-wrap">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            <p>{{ footer_note }}</p>
+            <p>© 2026. Сайт є комерційними і знаходиться в бета-тестуванні.</p>
+        </footer>
+    </div>
+
+    <div class="popup-layer" id="popup-layer" hidden>
+        <section class="popup-card" id="popup-card" aria-live="polite" aria-label="Спливаючий матеріал">
+            <button class="popup-close" id="popup-close" type="button" aria-label="Закрити вікно">×</button>
+            <div class="popup-body" id="popup-body"></div>
+        </section>
+    </div>
+
+    <script src="{{ request.url_for('static', path='script.js') }}"></script>
+</body>
+</html>

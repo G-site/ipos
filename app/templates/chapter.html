@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="chapter-hero">
+    <a class="back-link" href="/">Усі глави</a>
+    <p class="eyebrow">глава {{ "%02d" | format(chapter.id) }}</p>
+    <h1>{{ chapter.title }}</h1>
+    <p class="hero-text">{{ chapter.description }}</p>
+</section>
+
+<div class="chapter-layout">
+    <aside class="toc-card">
+        <p class="toc-title">Зміст</p>
+        <nav class="toc-list" aria-label="Зміст глави">
+            {% for item in chapter.toc %}
+                <a href="#{{ item.id }}">{{ item.title }}</a>
+            {% endfor %}
+        </nav>
+    </aside>
+
+    <section class="chapter-content">
+        {% for section in chapter.rendered_sections %}
+            <article class="content-section" id="{{ section.id }}">
+                <h2>{{ section.title }}</h2>
+                {% for paragraph in section.body %}
+                    <p>{{ paragraph | safe }}</p>
+                {% endfor %}
+            </article>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}

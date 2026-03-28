@@ -1,0 +1,531 @@
+:root {
+    --bg: #f4efe7;
+    --surface: rgba(255, 252, 247, 0.84);
+    --surface-strong: #fffaf2;
+    --line: rgba(78, 56, 34, 0.14);
+    --text: #24190f;
+    --muted: #74614f;
+    --accent: #b15d34;
+    --accent-soft: rgba(177, 93, 52, 0.14);
+    --shadow: 0 24px 80px rgba(54, 36, 19, 0.12);
+    --radius-lg: 32px;
+    --radius-md: 22px;
+    --radius-sm: 16px;
+    --max-width: 1180px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "IBM Plex Sans", "Segoe UI Variable", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 28%),
+        linear-gradient(180deg, #f7f2ea 0%, #f1e8dc 100%);
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+.site-shell {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.ambient {
+    position: fixed;
+    inset: auto;
+    pointer-events: none;
+    filter: blur(12px);
+    opacity: 0.8;
+}
+
+.ambient-left {
+    top: 4rem;
+    left: -6rem;
+    width: 18rem;
+    height: 18rem;
+    background: radial-gradient(circle, rgba(177, 93, 52, 0.18), transparent 72%);
+    animation: floatAmbient 14s ease-in-out infinite;
+}
+
+.ambient-right {
+    right: -5rem;
+    bottom: 8rem;
+    width: 22rem;
+    height: 22rem;
+    background: radial-gradient(circle, rgba(90, 124, 112, 0.17), transparent 68%);
+    animation: floatAmbient 16s ease-in-out infinite reverse;
+}
+
+.site-header,
+.page-wrap,
+.site-footer {
+    position: relative;
+    z-index: 1;
+    width: min(calc(100% - 2rem), var(--max-width));
+    margin: 0 auto;
+}
+
+.site-header {
+    padding: 1.5rem 0 0;
+}
+
+.site-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: rgba(255, 250, 242, 0.72);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
+    animation: riseIn 0.7s ease both;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(177, 93, 52, 0.16), rgba(107, 141, 127, 0.18));
+    color: var(--accent);
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.brand-title {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.03em;
+}
+
+.brand-note {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+}
+
+.header-badge {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.8rem 0.95rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.52);
+    border: 1px solid rgba(177, 93, 52, 0.1);
+    text-align: right;
+}
+
+.header-badge-label {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.7rem;
+}
+
+.header-badge-text {
+    max-width: 20rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.page-wrap {
+    padding: 2rem 0 4rem;
+}
+
+.hero,
+.chapter-hero,
+.toc-card,
+.content-section,
+.chapter-card,
+.site-footer {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
+}
+
+.hero,
+.chapter-hero {
+    padding: 3.25rem;
+    border-radius: var(--radius-lg);
+    animation: riseIn 0.8s ease both;
+}
+
+.eyebrow {
+    margin: 0 0 1rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.76rem;
+}
+
+.hero h1,
+.chapter-hero h1 {
+    margin: 0;
+    max-width: 12ch;
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+}
+
+.hero-text {
+    max-width: 44rem;
+    margin: 1.2rem 0 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1.4rem;
+}
+
+.chapter-card {
+    position: relative;
+    display: grid;
+    gap: 0.9rem;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    transform: translateY(18px);
+    opacity: 0;
+    animation: riseIn 0.8s ease forwards;
+}
+
+.chapter-card:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+.chapter-card:nth-child(3) {
+    animation-delay: 0.16s;
+}
+
+.chapter-card:hover {
+    border-color: rgba(177, 93, 52, 0.3);
+    transform: translateY(-6px);
+    transition: transform 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+    background: rgba(255, 250, 242, 0.96);
+}
+
+.chapter-number,
+.chapter-link,
+.back-link,
+.toc-title {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.74rem;
+}
+
+.chapter-card h2 {
+    margin: 0;
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.65rem;
+    line-height: 1.05;
+}
+
+.chapter-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.75;
+}
+
+.chapter-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+    margin-top: 1.4rem;
+}
+
+.toc-card {
+    position: sticky;
+    top: 1rem;
+    padding: 1.35rem;
+    border-radius: var(--radius-md);
+    animation: riseIn 0.85s ease both 0.08s;
+}
+
+.toc-title {
+    margin-bottom: 1rem;
+}
+
+.toc-list {
+    display: grid;
+    gap: 0.55rem;
+}
+
+.toc-list a {
+    padding: 0.8rem 0.9rem;
+    border-radius: 14px;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.45);
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.toc-list a:hover,
+.toc-list a:focus-visible {
+    background: var(--accent-soft);
+    color: var(--text);
+    transform: translateX(3px);
+}
+
+.chapter-content {
+    display: grid;
+    gap: 1rem;
+}
+
+.content-section {
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    animation: riseIn 0.9s ease both;
+}
+
+.content-section h2 {
+    margin: 0 0 1rem;
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+}
+
+.content-section p {
+    margin: 0;
+    line-height: 1.9;
+    color: rgba(36, 25, 15, 0.88);
+}
+
+.content-section p + p {
+    margin-top: 1rem;
+}
+
+.content-section strong {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.content-section .text-lean {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(36, 25, 15, 0.66);
+}
+
+.content-section .text-important {
+    color: #b42318;
+    font-weight: 800;
+}
+
+.inline-popup-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    margin: 0 0.18rem;
+    padding: 0.22rem 0.48rem;
+    border: 1px solid rgba(177, 93, 52, 0.22);
+    border-radius: 999px;
+    background: rgba(177, 93, 52, 0.08);
+    color: var(--accent);
+    cursor: pointer;
+    transition: transform 0.24s ease, background-color 0.24s ease, border-color 0.24s ease;
+}
+
+.inline-popup-trigger:hover,
+.inline-popup-trigger:focus-visible {
+    transform: translateY(-1px);
+    background: rgba(177, 93, 52, 0.15);
+    border-color: rgba(177, 93, 52, 0.36);
+    outline: none;
+}
+
+.link-label {
+    display: inline-flex;
+    gap: 0.28rem;
+}
+
+.link-word:last-child {
+    color: #6b8d7f;
+}
+
+.popup-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+}
+
+.popup-card {
+    position: fixed;
+    width: min(360px, calc(100vw - 2rem));
+    padding: 1.15rem 1.15rem 1rem;
+    border: 1px solid rgba(58, 40, 23, 0.14);
+    border-radius: 24px;
+    background: rgba(255, 250, 243, 0.97);
+    box-shadow: 0 18px 50px rgba(52, 35, 20, 0.18);
+    animation: popupIn 0.2s ease;
+}
+
+.popup-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(36, 25, 15, 0.08);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.popup-body {
+    padding-top: 1.5rem;
+}
+
+.popup-body p {
+    margin: 0;
+    color: rgba(36, 25, 15, 0.84);
+    line-height: 1.75;
+}
+
+.popup-body img,
+.popup-body iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 18px;
+}
+
+.popup-body iframe {
+    aspect-ratio: 16 / 9;
+}
+
+.site-footer {
+    margin-bottom: 1.5rem;
+    padding: 1.35rem 1.5rem;
+    border-radius: 22px;
+    color: var(--muted);
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+.site-footer p + p {
+    margin-top: 0.35rem;
+}
+
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popupIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes floatAmbient {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(16px, -18px, 0);
+    }
+}
+
+@media (max-width: 900px) {
+    .chapter-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .toc-card {
+        position: static;
+    }
+
+    .hero,
+    .chapter-hero {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-header,
+    .page-wrap,
+    .site-footer {
+        width: min(calc(100% - 1rem), var(--max-width));
+    }
+
+    .hero h1,
+    .chapter-hero h1 {
+        max-width: 100%;
+    }
+
+    .content-section,
+    .chapter-card {
+        padding: 1.35rem;
+    }
+
+    .site-header-inner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .header-badge {
+        text-align: left;
+    }
+}

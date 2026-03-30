@@ -2,6 +2,12 @@ const popupLayer = document.getElementById("popup-layer");
 const popupCard = document.getElementById("popup-card");
 const popupBody = document.getElementById("popup-body");
 const popupClose = document.getElementById("popup-close");
+const mobileViewport = window.matchMedia("(max-width: 640px)");
+const coarsePointer = window.matchMedia("(pointer: coarse)");
+
+function isPhoneLayout() {
+    return mobileViewport.matches || coarsePointer.matches;
+}
 
 function escapeHtml(value) {
     return value
@@ -25,6 +31,12 @@ function renderPopup(type, value) {
 }
 
 function positionPopup(trigger) {
+    if (isPhoneLayout()) {
+        popupCard.style.left = "";
+        popupCard.style.top = "";
+        return;
+    }
+
     const rect = trigger.getBoundingClientRect();
     const cardWidth = popupCard.offsetWidth;
     const gap = 12;

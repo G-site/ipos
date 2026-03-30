@@ -30,6 +30,7 @@ body {
         radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 28%),
         linear-gradient(180deg, #f7f2ea 0%, #f1e8dc 100%);
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 a {
@@ -515,6 +516,11 @@ select {
         max-width: 100%;
     }
 
+    .hero,
+    .chapter-hero {
+        padding: 1.5rem;
+    }
+
     .content-section,
     .chapter-card {
         padding: 1.35rem;
@@ -527,5 +533,24 @@ select {
 
     .header-badge {
         text-align: left;
+    }
+
+    .chapter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .popup-layer {
+        display: grid;
+        place-items: end center;
+        padding: 0.75rem;
+        background: rgba(36, 25, 15, 0.28);
+    }
+
+    .popup-card {
+        position: relative;
+        width: 100%;
+        max-height: min(78vh, 38rem);
+        overflow: auto;
+        border-radius: 22px 22px 16px 16px;
     }
 }

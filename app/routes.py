@@ -19,7 +19,7 @@ async def index(request: Request) -> HTMLResponse:
         context={
             "chapters": chapters,
             "page_title": settings.app_title,
-            "hero_title": "Навчання юних іпод'яконів",
+            "hero_title": "Навчання юних іподияконів",
             "hero_text": (
                 "Тихий, красивий і сучасний простір для знайомства зі служінням, "
                 "дисципліною та увагою у храмі."
